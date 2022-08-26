@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import Header from "./Header"
 import MovieView from "./MovieView"
  //import MovieCard from "./MovieCard"
-import getData from "./apiCalls"
+//import getData from "./apiCalls"
 import movieData from "./sample-data"
 import './App.css'
 
@@ -24,7 +24,6 @@ class App extends Component {
         <Header />
         <MovieView 
           movieData={this.state.movies}/>
-        {/* <SingleMovie />  */}
       </div>
     )
   }

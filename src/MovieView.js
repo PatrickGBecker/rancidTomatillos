@@ -11,10 +11,12 @@ const MovieView = ({movieData}) => {
                 movieData={movie}
                 src={movie.poster_path}
                 name={movie.title}
-                
                 />   
         )
     })
+    return (
+        <div>{movieCards}</div>
+    )
 }
 
 
