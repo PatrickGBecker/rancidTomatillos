@@ -1,0 +1,12 @@
+.singleMovie {
+    display: flex;
+    height: 50px;
+    width: 100px;
+}
+.backdrop {
+    /* height: 50px;
+    width: 100px; */
+}
+.title {
+    width: 50;
+}

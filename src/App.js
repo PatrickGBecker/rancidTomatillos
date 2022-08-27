@@ -31,16 +31,23 @@ class App extends Component {
    console.log(this.state)
  }
  
+ displayAllMovies = () => {
+  this.setState({currentMovie: ''})
+ }
 
   render = () => {
+    let display
+    if(this.state.currentMovie) {
+      display = <SingleMovie currentMovie={this.state.currentMovie} displayAllMovies={this.displayAllMovies} />
+    } else {
+      display = <MovieView movieData={this.state.movies} findSingleMovie={this.findSingleMovie} />
+    }
+
+
     return (
       <div>
         <Header />
-        <MovieView 
-          movieData={this.state.movies}
-          findSingleMovie={this.findSingleMovie}/>
-        <SingleMovie 
-          id={this.state.movies}  />
+        {display}
       </div>
     )
   }
