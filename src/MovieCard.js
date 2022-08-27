@@ -1,6 +1,6 @@
 import React from "react"
-import MovieView from "./MovieView"
-import SingleMovie from "./SingleMovie"
+// import MovieView from "./MovieView"
+// import SingleMovie from "./SingleMovie"
 
 import "./MovieCard.css"
 
