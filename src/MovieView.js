@@ -9,9 +9,9 @@ const MovieView = ({movieData, findSingleMovie}) => {
         return (
             <MovieCard 
                 key={movie.id}
-                movieData={movie}
-                src={movie.poster_path}
-                name={movie.title}
+                id={movie.id}
+                title={movie.title}
+                posterPath={movie.poster_path}
                 findSingleMovie={findSingleMovie}
                 />   
         )

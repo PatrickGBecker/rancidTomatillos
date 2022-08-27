@@ -1,26 +1,44 @@
-import React from 'react'
-
+import React, { Component } from 'react'
+import getData from './apiCalls'
 import "./SingleMovie.css"
 
-const SingleMovie = ({ currentMovie, displayAllMovies }) => {
+
+class SingleMovie extends Component {
+    constructor(selectedMovie) {
+    super(selectedMovie)
+        this.state = {
+            currentMovie: '',
+            id: selectedMovie.selectedMovie.id,
+            trailer: ''
+        }
+    }
+
+
+componentDidMount = () => {
+    getData(`/movies/${this.state.id}`)
+        .then(data => data.movie)
+        .then(movie => this.setState({currentMovie: movie}))
+}
+
+render = () => {
     return (
         <div className='singleMovie'>
             <div className="backDropContainer">
-                <img className='backdrop' src={currentMovie.backdrop_path} alt="Backdrop Image"></img>
-                <h2 className='title'>{currentMovie.title}</h2>
+                <img className='backdrop' src={this.state.currentMovie.backdrop_path} alt="Backdrop Image"></img>
+                <h2 className='title'>{this.state.currentMovie.title}</h2>
             </div>
             <div className="detailsContainer">
-                <img className="miniPoster" src={currentMovie.poster_path} alt="Mini poster image"></img>
+                <img className="miniPoster" src={this.state.currentMovie.poster_path} alt="Mini poster image"></img>
                 <div className='movieInfo'>
-                    <p>{currentMovie.average_rating.toFixed(2)}</p>
-                    <p>{currentMovie.release_date}</p>
+                    <p>{this.state.currentMovie.average_rating}</p>
+                    <p>{this.state.currentMovie.release_date}</p>
                 </div>
                 <div className='details'>
                 </div>
-            <button onClick={() => displayAllMovies()}>Back to All Movies</button>
             </div>
         </div>
     )
+}
 }
     
 
