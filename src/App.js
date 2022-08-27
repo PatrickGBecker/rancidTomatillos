@@ -3,8 +3,8 @@ import Header from "./Header"
 import MovieView from "./MovieView"
 import SingleMovie from "./SingleMovie"
 import MovieCard from "./MovieCard"
-//import getData from "./apiCalls"
-import movieData from "./sample-data"
+import  fetchMovies  from "./apiCalls"
+// import movieData from "./sample-data"
 import './App.css'
 
 class App extends Component {
@@ -12,23 +12,34 @@ class App extends Component {
     super() 
     this.state = {
       movies: [],
-      currentMovie: ''
+      currentMovie: '',
+      error: ''
     }
   }
 
   componentDidMount = () => {
-    this.setState({movies: movieData.movies})
+    // this.setState({movies: movieData.movies})
+    fetchMovies.getAllMovieData()
+    .then(data => this.setState({movies:data.movies}))
+    .catch(error => {
+      console.log(error)
+      this.setState({error:`${error}`})
+    })
   }
 
- findSingleMovie = (event) => {
-   const singleMovie = this.state.movies.find(movie => {
-     console.log(movie.id)
-     console.log(event.target.id);
-     return movie.id === parseInt(event.target.id)
-   })
-   
-   this.setState({currentMovie:singleMovie})
-   console.log(this.state)
+  handleChange = (event) => {
+    this.setState({currentMovie:event.target.value})
+  }
+
+ findSingleMovie = (id) => {
+  fetchMovies.getCurrentMovieData(id)
+    .then(data => this.setState({ currentMovie: data.movie }))
+    // .catch(error => {
+    //   console.log(error)
+    //   this.setState({ error: `${error}` })
+    // })
+  //  const singleMovie = this.state.movies.find(movie => {
+  //    return movie.id === parseInt(event.target.id)
  }
  
  displayAllMovies = () => {
@@ -38,7 +49,7 @@ class App extends Component {
   render = () => {
     let display
     if(this.state.currentMovie) {
-      display = <SingleMovie currentMovie={this.state.currentMovie} displayAllMovies={this.displayAllMovies} />
+      display = <SingleMovie currentMovie={this.state.currentMovie} displayAllMovies={this.displayAllMovies}/>
     } else {
       display = <MovieView movieData={this.state.movies} findSingleMovie={this.findSingleMovie} />
     }
