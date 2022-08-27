@@ -1,12 +1,48 @@
 .singleMovie {
     display: flex;
-    height: 50px;
-    width: 100px;
-}
-.backdrop {
+    flex-direction: column;
     /* height: 50px;
     width: 100px; */
 }
+
+.backdrop {
+    height: 70vh;
+    width: 100%;
+}
+
 .title {
     width: 50;
+}
+
+.miniPoster {
+    height: 300px;
+    width:  200px;
+}
+
+.detailsContainer {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.movieInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.miniPoster {
+    height: 300px;
+    width: 200px;
+}
+
+.movieInfo {
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    width: 60vw;
+}
+
+button {
+ height: 40px;
+ width: 120px;
 }
