@@ -5,15 +5,15 @@ import React from "react"
 import "./MovieCard.css"
 
 
-const MovieCard = ({movieData, findSingleMovie, id}) => {
+const MovieCard = ({title, posterPath, findSingleMovie, id}) => {
     return(
-        <div className="gridView">
-            <img id={movieData.id} className="moviePoster" 
-                src={movieData.poster_path}
-                alt={`Poster for ${movieData.title}`}
+        <div className="gridView" key={id}>
+            <img id={id} className="moviePoster" 
+                src={posterPath}
+                alt={`Poster for ${title}`}
                 onClick={()=>findSingleMovie(id)}
                 />
-            <h2>{movieData.title}</h2>
+            <h2>{title}</h2>
         </div>
     )
 }
