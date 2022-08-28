@@ -1,5 +1,24 @@
 .moviePoster {
-    height: 300px;
-    width: 150px;
+        height: 471px;
+        width: 289px;
+        border-radius: 6%;
+        box-shadow: 10px 5px 5px rgb(7, 7, 7);
+        border: 1px solid;
+        
 }
-
+.movieInfo {
+    background-color: antiquewhite;
+    box-shadow: 10px 5px 5px rgb(172, 200, 200);
+    border-radius: 2%;
+}
+.backdrop {
+    height: 323px;
+    width: 83vw;
+    
+}
+h2 {
+   
+    background-color: rgb(206, 202, 202);
+    border-radius: 2%;
+    box-shadow: 10px 5px 5px rgb(230, 184, 230);
+}
