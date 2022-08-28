@@ -30,10 +30,14 @@ render = () => {
             <div className="detailsContainer">
                 <img className="miniPoster" src={this.state.currentMovie.poster_path} alt="Mini poster image"></img>
                 <div className='movieInfo'>
-                    <p>{this.state.currentMovie.average_rating}</p>
-                    <p>{this.state.currentMovie.release_date}</p>
+                    <p>Summary: {this.state.currentMovie.overview}</p>
+                    <p>Genre: {this.state.currentMovie.genres}</p>
+                    <p>Rating: {this.state.currentMovie.average_rating}</p>
                 </div>
                 <div className='details'>
+                    <p>Release Date: {this.state.currentMovie.release_date}</p>
+                    <p>Run Time: {this.state.currentMovie.runtime} </p>
+                    <p>Budget: {this.state.currentMovie.budget}</p>
                 </div>
             </div>
         </div>
