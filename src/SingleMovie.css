@@ -1,8 +1,7 @@
 .singleMovie {
     display: flex;
     flex-direction: column;
-    /* height: 50px;
-    width: 100px; */
+    margin: 10px;
 }
 
 .backdrop {
@@ -40,9 +39,11 @@
     flex-direction: column;
     height: 40vh;
     width: 60vw;
+    margin: 20px;
 }
 
 button {
  height: 40px;
  width: 120px;
 }
+
