@@ -47,3 +47,8 @@ button {
  width: 120px;
 }
 
+.movieTrailer {
+    position: absolute;
+    top: 50%;
+    margin: 0;
+}

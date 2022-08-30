@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import Header from "./Header"
 import MovieView from "./MovieView"
 import SingleMovie from "./SingleMovie"
-import MovieCard from "./MovieCard"
 import getData from "./apiCalls"
 // import movieData from "./sample-data"
 import './App.css'
