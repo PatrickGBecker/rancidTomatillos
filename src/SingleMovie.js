@@ -6,6 +6,7 @@ import "./SingleMovie.css"
 class SingleMovie extends Component {
     constructor(selectedMovie) {
     super(selectedMovie)
+    console.log(selectedMovie.selectedMovie.id)
         this.state = {
             currentMovie: '',
             id: selectedMovie.selectedMovie.id,
@@ -55,7 +56,7 @@ render = () => {
             </div>
         </div>
     )
-}
+    }
 }
     
 
