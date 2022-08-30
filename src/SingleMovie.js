@@ -18,6 +18,9 @@ componentDidMount = () => {
     getData(`/movies/${this.state.id}`)
         .then(data => data.movie)
         .then(movie => this.setState({currentMovie: movie}))
+    getData(`/movies/${this.state.id}/videos`)
+        .then(data => data.videos)
+        .then(videos => this.setState({ trailer: videos[0] }))
 }
 
 render = () => {
@@ -38,6 +41,16 @@ render = () => {
                     <p className='releaseDate'>Release Date: {this.state.currentMovie.release_date}</p>
                     <p className='runTime'>Run Time: {this.state.currentMovie.runtime} </p>
                     <p className='budget'>Budget: {this.state.currentMovie.budget}</p>
+                </div>
+                <div className='movieTrailer'>
+                    <iframe
+                        width="853"
+                        height="480"
+                        src={this.state.trailer && `https://www.youtube.com/embed/${this.state.trailer.key}`}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title="Embedded youtube" />
                 </div>
             </div>
         </div>
