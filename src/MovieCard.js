@@ -7,9 +7,9 @@ import "./MovieCard.css"
 
 
 const MovieCard = ({title, posterPath, findSingleMovie, id}) => {
-    return(
+    return (
         <div className="gridView" key={id}>
-            <Link to={`/${id}`}>
+            <Link to={`/movies/${id}`}>
             <img id={id} className="moviePoster" 
                 src={posterPath}
                 alt={`Poster for ${title}`}

@@ -6,7 +6,6 @@ import "./SingleMovie.css"
 class SingleMovie extends Component {
     constructor(selectedMovie) {
     super(selectedMovie)
-    console.log(selectedMovie.selectedMovie.id)
         this.state = {
             currentMovie: '',
             id: selectedMovie.selectedMovie.id,
@@ -25,6 +24,7 @@ componentDidMount = () => {
 }
 
 render = () => {
+    
     return (
         <div className='singleMovie'>
             <div className="backDropContainer">
@@ -43,19 +43,19 @@ render = () => {
                     <p className='runTime'>Run Time: {this.state.currentMovie.runtime} </p>
                     <p className='budget'>Budget: {this.state.currentMovie.budget}</p>
                 </div>
-                <div className='movieTrailer'>
-                    <iframe
-                        width="853"
-                        height="480"
-                        src={this.state.trailer && `https://www.youtube.com/embed/${this.state.trailer.key}`}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        title="Embedded youtube" />
-                </div>
+                    <div className='movieTrailer'>
+                        <iframe
+                            width="853"
+                            height="480"
+                            src={this.state.trailer && `https://www.youtube.com/embed/${this.state.trailer.key}`}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            title="Embedded youtube" />
+                     </div>
             </div>
         </div>
-    )
+    ) 
     }
 }
     
