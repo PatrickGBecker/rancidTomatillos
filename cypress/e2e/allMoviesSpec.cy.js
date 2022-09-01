@@ -13,12 +13,10 @@ describe('App', () => {
     cy.get('div').should('have.class', 'appContainer').children('div').contains('Money Plane')
   })
 
-  // it('should relocate to error screen if api call fails', () => {
-  //   cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', 'localhost3000/error')
-  //   cy.url().should('include', '/error')
-   
-
-  // })
+  it('should relocate to error screen if api call fails', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/error', 'localhost3000/error')
+    cy.url().should('include', '/error')
+  })
 
   it('Should be able to click on a movie poster and taken to that selected movie/s page', () => {
     cy.get('.moviePoster').first().click()

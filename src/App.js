@@ -3,6 +3,7 @@ import Header from "./Header"
 import MovieView from "./MovieView"
 import SingleMovie from "./SingleMovie"
 import getData from "./apiCalls"
+import ErrorHandling from './ErrorHandling'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
 
@@ -49,6 +50,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/movies/:id" render={() => <SingleMovie selectedMovie={this.state.currentMovie}/> }/>
             <Route path="/" render={() => <MovieView movieData={this.state.movies} findSingleMovie={this.findSingleMovie} /> } />
+            <Route path="/error" render={() => <ErrorHandling error={this.state.error}/>} />
           </Switch>
       </div>
     )
