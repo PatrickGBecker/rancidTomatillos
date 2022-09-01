@@ -6,24 +6,26 @@ describe('App', () => {
   it('Should load main page with title', () => {
     cy.get('header').find('h1').contains('Rancid Tomatillos')
   })
-
+  
   it('Should load main page by fetching all the movie posters with movie titles', () => {
     cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     cy.get('.moviePoster').should('have.length', 40)
     cy.get('div').should('have.class', 'appContainer').children('div').contains('Money Plane')
   })
-
-  // it('should relocate to error screen if api call fails', () => {
-  //   cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', 'localhost3000/error')
-  //   cy.url().should('include', '/error')
-   
-
-  // })
-
+  
+  it('should display an error message if page load fails', () => {
+    cy.get('h1').should('have.class', 'errorMessage').contains('Sorry! We\'re working on it!')
+  })
+  
   it('Should be able to click on a movie poster and taken to that selected movie/s page', () => {
     cy.get('.moviePoster').first().click()
     cy.url().should('include', '/694919')
-    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919')
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919', {statusCode: 201, body: {
+      id: 694919,
+      title: "Money Plane",
+      poster_path: "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
+    }})
+    
   })
 })
 
@@ -32,7 +34,7 @@ describe('Single Movie', () => {
     cy.visit('http://localhost:3000')
     cy.get('.moviePoster').first().click()
     cy.url().should('include', '/694919')
-    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919') 
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919', {}) 
   })
 
   it('should load the selected movie/s details', () => {
@@ -57,11 +59,9 @@ describe('Single Movie', () => {
     cy.get('header').find('h1').contains('Rancid Tomatillos')
     cy.get('.moviePoster').should('have.length', 40)
     cy.get('button').should('not.exist');
-  })
-  // it('should go to the error page if a user types in the wrong URL and have ability to go back to homepage', () => {
-  //   cy.visit('http://localhost:3000/3445')
-  //   cy.url().should('include', '/error')
-  //   cy.get('main').find('h3').contains("Something went wrong, Please try again later.")
-  //   cy.get('.home').click()
-  // })
-})
+    cy.location().should((loc) => {
+      expect(loc.host).to.eq('localhost:3000')
+      expect(loc.hostname).to.eq('localhost')
+      })
+    })
+   })
