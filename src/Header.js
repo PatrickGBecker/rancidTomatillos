@@ -6,7 +6,7 @@ const Header = ({ homeButton, backHome }) => {
     return (
         <header className="header">
             <h1>Rancid Tomatillos</h1>
-            <Link to={'/'}onClick={() => backHome()}>{ homeButton && <button className='home-button'>Home</button>}</Link>
+            <Link to={'/'}onClick={() => backHome()}>{ homeButton && <button className='homeButton'>Home</button>}</Link>
         </header>
     )
 }
