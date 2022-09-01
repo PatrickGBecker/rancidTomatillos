@@ -44,7 +44,7 @@ render = () => {
                     <p className='budget'>Budget: {this.state.currentMovie.budget}</p>
                 </div>
                     <div className='movieTrailer'>
-                        <iframe
+                        <iframe 
                             width="853"
                             height="480"
                             src={this.state.trailer && `https://www.youtube.com/embed/${this.state.trailer.key}`}
