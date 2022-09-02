@@ -7,9 +7,10 @@ class SingleMovie extends Component {
     constructor(selectedMovie) {
     super(selectedMovie)
         this.state = {
-            currentMovie: '',
+            currentMovie: ' ',
             id: selectedMovie.selectedMovie.id,
-            trailer: ''
+            movieTrailers: [ ],
+            selectedMovieTrailer: { },
         }
     }
 
@@ -20,9 +21,13 @@ componentDidMount = () => {
         .then(movie => this.setState({currentMovie: movie}))
     getData(`/movies/${this.state.id}/videos`)
         .then(data => data.videos)
-        .then(videos => this.setState({ trailer: videos[0] }))
+        .then( videos => this.setState( { movieTrailers: videos } ) )
+		.then( ( ) => this.setState( { selectedMovieTrailer: this.state.movieTrailers[ 0 ] } ) )
 }
 
+selectDifferentTrailer = ( video ) => {
+    this.setState( { selectedMovieTrailer: video } )
+}
 
 render = () => {
     
@@ -44,16 +49,25 @@ render = () => {
                     <p className='runTime'>Run Time: {this.state.currentMovie.runtime} </p>
                     <p className='budget'>Budget: {this.state.currentMovie.budget}</p>
                 </div>
-                    <div className='movieTrailer'>
-                        <iframe 
-                            width="853"
-                            height="480"
-                            src={this.state.trailer && `https://www.youtube.com/embed/${this.state.trailer.key}`}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            title="Embedded youtube" />
-				</div>
+                { this.state.selectedMovieTrailer &&
+							<div className='movie-trailer'>
+								<iframe
+									src={ this.state.selectedMovieTrailer && `https://www.youtube.com/embed/${ this.state.selectedMovieTrailer.key }` }
+									frameBorder="0"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowFullScreen
+									title="Embedded youtube"/>
+							</div> }
+
+							<div className='select-different-trailer-container'>
+								{ this.state.movieTrailers.length > 1 && this.state.movieTrailers.map( trailer => <button 
+									key={ `${ trailer.id }` } 
+									src={ `https://www.youtube.com/embed/${ trailer.key }` }
+									onClick={ ( ) => this.selectDifferentTrailer( trailer ) }
+									className='movie-trailer-buttons'>
+										{ `${ trailer.type }` }
+									</button> ) }
+							</div>
             </div>
         </div>
     ) 
