@@ -37,6 +37,6 @@
 
 
 ### Possible Future extensions
--Add movie trailer viewing functionality and display
--Search feature to filter and find movies
+- Add movie trailer viewing functionality and display
+- Search feature to filter and find movies
 

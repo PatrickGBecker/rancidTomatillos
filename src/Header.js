@@ -5,7 +5,7 @@ import "./Header.css"
 const Header = ({ homeButton, backHome }) => {
     return (
         <header className="header">
-            <h1>Rancid Tomatillos</h1>
+            <h1><span>Rancid</span> Tomatillos</h1>
             <Link to={'/'}onClick={() => backHome()}>{ homeButton && <button className='homeButton'>Home</button>}</Link>
         </header>
     )
