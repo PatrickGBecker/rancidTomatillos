@@ -1,13 +1,11 @@
 .moviePoster {
-        height: 471px;
-        width: 289px;
-        border-radius: 6%;
-        box-shadow: 10px 5px 5px rgb(7, 7, 7);
-        border: 1px solid;
-        transition: 1s ease;
-        
+    height: 471px;
+    width: 289px;
+    border-radius: 6%;
+    box-shadow: 10px 5px 5px rgb(7, 7, 7);
+    border: 1px solid;
+    transition: 1s ease;
 }
-
 
 .moviePoster:hover {
 -webkit-transform: scale(1.2);
@@ -15,7 +13,6 @@
     transform: scale(1.2);
     transition: 1s ease;
 }
-
 
 .movieInfo {
     background-color: antiquewhite;
@@ -25,14 +22,14 @@
     font-size: medium;
     padding: 10px;
 }
+
 .backdrop {
     height: 323px;
     width: 83vw;
     
 }
-h2 {
-   
 
+h2 {
     border-radius: 2%;
     box-shadow: 10px 5px 5px rgb(230, 184, 230);
     background-image: conic-gradient(#553c9a, #ee4b2b, #00c2cb);

@@ -3,7 +3,6 @@ import Header from "./Header"
 import MovieView from "./MovieView"
 import SingleMovie from "./SingleMovie"
 import getData from "./apiCalls"
-// import ErrorHandling from './ErrorHandling'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
 
@@ -19,7 +18,6 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    // this.setState({movies: movieData.movies})
     getData('/movies')
     .then(data => this.setState({movies:data.movies}))
     .catch(error => {
@@ -27,7 +25,6 @@ class App extends Component {
       this.setState({error:`${error}`})
     })
   }
-
 
  findSingleMovie = (id) => {
    const singleMovie = this.state.movies.find(movie => {
@@ -42,15 +39,12 @@ class App extends Component {
       const backHome = () => {
         this.setState( { homeButton: false })
       }
-      
-  
        return (
         <div className='appContainer'>
           <Header homeButton={ this.state.homeButton } backHome={backHome}/>
           <Switch>
             <Route exact path="/movies/:id" render={() => <SingleMovie selectedMovie={this.state.currentMovie}/> }/>
             <Route path="/" render={() => <MovieView movieData={this.state.movies} findSingleMovie={this.findSingleMovie} /> } />
-            {/* <Route path="*" render={() => <ErrorHandling error={this.state.error}/>} /> */}
           </Switch>
       </div>
     )

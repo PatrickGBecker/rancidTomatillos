@@ -18,7 +18,6 @@ const MovieView = ({movieData, findSingleMovie}) => {
     })
     
     return (
-
         <div className="movieGrid">{movieCards} 
          {!movieCards.length && <h1 className="errorMessage">Sorry! We're working on it! </h1>}
         </div>
