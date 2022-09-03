@@ -7,9 +7,10 @@ class SingleMovie extends Component {
     constructor(selectedMovie) {
     super(selectedMovie)
         this.state = {
-            currentMovie: '',
+            currentMovie: ' ',
             id: selectedMovie.selectedMovie.id,
-            trailer: ''
+            // movieTrailers: [ ],  Movie Trailer functionality is intentionally unused but kept for future iterations.
+            // currentMovieTrailer: { }, While it is close to being done, it is not necessary for the MVP.
         }
     }
 
@@ -20,12 +21,22 @@ componentDidMount = () => {
         .then(movie => this.setState({currentMovie: movie}))
     getData(`/movies/${this.state.id}/videos`)
         .then(data => data.videos)
-        .then(videos => this.setState({ trailer: videos[0] }))
+        .then( videos => this.setState( { movieTrailers: videos } ) )
+		.then( ( ) => this.setState( { currentMovieTrailer: this.state.movieTrailers[ 0 ] } ) )
+        .catch(error => {
+            console.log(error)
+            this.setState({error:`${error}`})
+          })
 }
 
+// selectDifferentTrailer = ( video ) => {
+//     this.setState( { currentMovieTrailer: video } )
+// }
 
 render = () => {
-    
+
+let allGenres = [this.state.currentMovie.genres];
+
     return (
         <div className='singleMovie'>
             <div className="backDropContainer">
@@ -36,24 +47,33 @@ render = () => {
                 <img className="miniPoster" src={this.state.currentMovie.poster_path} alt="Mini poster image"></img>
                 <div className='movieInfo'>
                     <p className='summary'>Summary: {this.state.currentMovie.overview}</p>
-                    <p className='genre'>Genre: {this.state.currentMovie.genres}</p>
-                    <p className='rating'>Rating: {this.state.currentMovie.average_rating}</p>
+                    <p className='genre'>Genre: {allGenres.join(', ')}</p>
+                    <p className='rating'>Average Rating: { parseInt( this.state.currentMovie.average_rating ).toFixed( 1 ) }/10</p>
                 </div>
                 <div className='details'>
                     <p className='releaseDate'>Release Date: {this.state.currentMovie.release_date}</p>
-                    <p className='runTime'>Run Time: {this.state.currentMovie.runtime} </p>
-                    <p className='budget'>Budget: {this.state.currentMovie.budget}</p>
+                    <p className='runTime'>Run Time: {this.state.currentMovie.runtime} minutes</p>
+                    { this.state.currentMovie.budget > 0 && <p className='budget'>Budget: ${ parseInt( this.state.currentMovie.budget ).toLocaleString( ) }</p> }
                 </div>
-                    <div className='movieTrailer'>
-                        <iframe 
-                            width="853"
-                            height="480"
-                            src={this.state.trailer && `https://www.youtube.com/embed/${this.state.trailer.key}`}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            title="Embedded youtube" />
-				</div>
+                {/* { this.state.currentMovieTrailer &&
+							<div className='movie-trailer'>
+								<iframe
+									src={ this.state.currentMovieTrailer && `https://www.youtube.com/embed/${ this.state.currentMovieTrailer.key }` }
+									frameBorder="0"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowFullScreen
+									title="Embedded youtube"/>
+							</div> }
+
+							<div className='selectDifferentTrailerContainer'>
+								{ this.state.movieTrailers.length > 1 && this.state.movieTrailers.map( trailer => <button 
+									key={ `${ trailer.id }` } 
+									src={ `https://www.youtube.com/embed/${ trailer.key }` }
+									onClick={ ( ) => this.selectDifferentTrailer( trailer ) }
+									className='movieTrailerButtons'>
+										{ `${ trailer.type }` }
+									</button> ) }
+							</div> */}
             </div>
         </div>
     ) 
