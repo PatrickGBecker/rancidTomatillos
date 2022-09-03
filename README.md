@@ -16,13 +16,13 @@
 - Trello
 
 ### Deployed Link
-- link goes here
+- [Rancid Tomatillos Deployed Site](https://patrickgbecker.github.io/rancidTomatillos/)
 
 ### Visual Demo
 ![gif](src/rancidTomatillosGIF.gif)
 
 ### Planning
-- Utilized Figma to create a wireframe and Trello for a project board to organize user stories and gather inspiration to create our own project. 
+- Utilized Figma to create a wire-frame and Trello for a project board to organize user stories and gather inspiration to create our own project. 
 
 ### Challenges
 - We had to learn React, Router and Cypress asynchronously for the first time ever. 
@@ -33,7 +33,7 @@
 - We successfully implemented Acceptance and E2E testing in Cypress. 
 - Successfully implemented functionality and full DOM manipulation with React and Router.
 - Fully integrated API network requests with error handling into the app 
-- Successfully coordinated asychronous and paired coding. 
+- Successfully coordinated asynchronous and paired coding. 
 
 
 ### Possible Future extensions
