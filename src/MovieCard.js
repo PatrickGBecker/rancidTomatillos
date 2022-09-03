@@ -1,10 +1,6 @@
 import React from "react"
 import { Link } from 'react-router-dom';
-// import MovieView from "./MovieView"
-// import SingleMovie from "./SingleMovie"
-
 import "./MovieCard.css"
-
 
 const MovieCard = ({title, posterPath, findSingleMovie, id}) => {
     return (

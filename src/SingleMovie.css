@@ -63,8 +63,8 @@ button {
     padding: 10px;
 }
 
-
-@media screen and (min-width: 1500px) {
+/* for future movie trailer display
+/* @media screen and (min-width: 1500px) {
     h1  {
         font-size: 50px;
     }
@@ -112,4 +112,4 @@ button {
         width: 553px;
         height: 360px;
     }
-}
+} */
